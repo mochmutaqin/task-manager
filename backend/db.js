@@ -4,10 +4,14 @@ require('dotenv').config();
 
 dns.setDefaultResultOrder('ipv4first');
 
-console.log("DATABASE_URL:", process.env.DATABASE_URL);
+// String koneksi Pooler IPv4 baru milikmu
+const connectionStringIPv4 = "postgresql://postgres.utwsaxexddsmxlirzfrb:TaskManager123!@aws-1-ap-southeast-1.pooler.supabase.com:6543/postgres?sslmode=require";
+
+console.log("DATABASE_URL yang digunakan:", connectionStringIPv4);
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  // Kita paksa menggunakan connectionStringIPv4 yang baru di sini
+  connectionString: connectionStringIPv4,
   ssl: { rejectUnauthorized: false }
 });
 
