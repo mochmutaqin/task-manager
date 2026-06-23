@@ -4,14 +4,14 @@ require('dotenv').config();
 
 dns.setDefaultResultOrder('ipv4first');
 
-// String koneksi Pooler IPv4 baru milikmu
-const connectionStringIPv4 = "postgresql://postgres.utwsaxexddsmxlirzfrb:TaskManager123!@aws-1-ap-southeast-1.pooler.supabase.com:6543/postgres?sslmode=require";
+// Ubah URL di bawah: ganti ?sslmode=require menjadi ?sslmode=no-verify
+const connectionStringIPv4 = "postgresql://postgres.utwsaxexddsmxlirzfrb:TaskManager123!@aws-1-ap-southeast-1.pooler.supabase.com:6543/postgres?sslmode=no-verify";
 
 console.log("DATABASE_URL yang digunakan:", connectionStringIPv4);
 
 const pool = new Pool({
-  // Kita paksa menggunakan connectionStringIPv4 yang baru di sini
   connectionString: connectionStringIPv4,
+  // Tetap pertahankan ini agar pg client mengabaikan validasi sertifikat lokal
   ssl: { rejectUnauthorized: false }
 });
 
