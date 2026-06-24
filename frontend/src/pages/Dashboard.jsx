@@ -11,7 +11,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(false);
 
   const api = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: 'https://considerate-manifestation-production-eebf.up.railway.app/api',
     headers: { Authorization: `Bearer ${token}` }
   });
 
